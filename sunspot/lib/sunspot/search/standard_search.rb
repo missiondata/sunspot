@@ -69,7 +69,7 @@ module Sunspot
           # If no query was given, or all terms are present in the index,
           # return Solr's suggested collation.
           if terms.length == 0
-            collation = solr_spellcheck['collations'][-1]
+            collation = solr_spellcheck['collations'].select.with_index { |_, i| i.odd? }
           end
 
           collation
